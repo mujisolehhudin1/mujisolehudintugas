@@ -212,6 +212,27 @@ display:none;
 
 .music{
 margin-top:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.music button{
+padding:14px 28px;
+background:#ff4b2b;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:17px;
+transition:.3s;
+}
+
+.music button:hover{
+background:#ff6b4a;
+transform:scale(1.05);
 }
 
 @media(max-width:768px){
@@ -274,6 +295,8 @@ Mari mengenal keindahan alam, budaya, dan kekayaan Nusantara.
 <div class="music">
 
 <button onclick="playMusic()">🎵 Putar Musik</button>
+
+<button onclick="pauseMusic()">⏸ Pause Musik</button>
 
 </div>
 
@@ -361,6 +384,16 @@ function playMusic(){
 let audio=document.getElementById("audio");
 
 audio.play();
+
+}
+
+function pauseMusic(){
+
+let audio=document.getElementById("audio");
+
+audio.pause();
+
+}
 
 }
 
