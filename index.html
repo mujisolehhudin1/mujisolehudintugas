@@ -3,40 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Pesona Indonesia</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:Poppins,sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
 background:#f4f4f4;
-color:#222;
+color:#333;
 transition:.4s;
 }
 
 body.dark{
 background:#111;
-color:white;
+color:#fff;
 }
 
 nav{
 position:fixed;
+top:0;
+left:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
-background:rgba(0,0,0,.3);
+padding:18px 8%;
+background:rgba(0,0,0,.5);
 backdrop-filter:blur(8px);
-z-index:1000;
+z-index:999;
 }
 
 nav h2{
@@ -52,120 +56,187 @@ nav ul li{
 margin-left:25px;
 }
 
-nav ul li a{
+nav a{
 text-decoration:none;
 color:white;
-font-weight:bold;
+font-weight:600;
 }
 
 .hero{
 height:100vh;
-background:url("https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1600&q=80") center/cover;
+background-image:url("https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=1600");
+background-size:cover;
+background-position:center;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:center;
-color:white;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
 }
 
 .hero-content{
-background:rgba(0,0,0,.5);
-padding:40px;
-border-radius:20px;
+position:relative;
+z-index:2;
+text-align:center;
+color:white;
+padding:30px;
 }
 
 .hero h1{
-font-size:55px;
+font-size:60px;
 margin-bottom:15px;
 }
 
 .hero p{
-font-size:20px;
-margin-bottom:20px;
+font-size:22px;
+margin-bottom:25px;
 }
 
 button{
-padding:12px 25px;
+padding:14px 28px;
+background:#ff4b2b;
+color:white;
 border:none;
 border-radius:30px;
-background:#ff4d00;
-color:white;
-font-size:18px;
 cursor:pointer;
+font-size:17px;
+transition:.3s;
+}
+
+button:hover{
+background:#ff6b4a;
 }
 
 section{
-padding:70px 10%;
+padding:80px 10%;
 }
 
 .card{
 background:white;
-padding:25px;
+padding:30px;
 border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-margin-top:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+margin-top:25px;
 }
 
 body.dark .card{
 background:#222;
 }
 
-iframe{
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.gallery img{
 width:100%;
-height:500px;
+height:220px;
+object-fit:cover;
 border-radius:15px;
-margin-top:20px;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.video-container{
+position:relative;
+padding-bottom:56.25%;
+height:0;
+overflow:hidden;
+margin-top:25px;
+border-radius:15px;
+}
+
+.video-container iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
 }
 
 footer{
 background:#222;
 color:white;
+padding:30px;
 text-align:center;
-padding:20px;
+margin-top:50px;
 }
 
 .mode{
 position:fixed;
 right:20px;
 bottom:20px;
+width:55px;
+height:55px;
+border-radius:50%;
 background:#222;
 color:white;
-padding:15px;
-border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
 cursor:pointer;
-font-size:20px;
+font-size:22px;
 }
 
-audio{
+.top{
+position:fixed;
+left:20px;
+bottom:20px;
+width:55px;
+height:55px;
+background:#ff4b2b;
+color:white;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-size:22px;
+}
+
+#audio{
 display:none;
+}
+
+.music{
+margin-top:20px;
 }
 
 @media(max-width:768px){
 
 .hero h1{
-font-size:35px;
+font-size:38px;
 }
 
-nav{
-padding:20px;
+.hero p{
+font-size:18px;
 }
 
 nav ul{
 display:none;
 }
 
-iframe{
-height:250px;
 }
 
-}
 </style>
 
 </head>
+
 <body>
 
-<!-- Musik -->
-<audio autoplay loop controls>
+<audio id="audio" loop>
 <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
@@ -174,9 +245,15 @@ height:250px;
 <h2>🇮🇩 Indonesia</h2>
 
 <ul>
+
 <li><a href="#home">Home</a></li>
+
 <li><a href="#tentang">Tentang</a></li>
+
+<li><a href="#galeri">Galeri</a></li>
+
 <li><a href="#video">Video</a></li>
+
 </ul>
 
 </nav>
@@ -187,10 +264,18 @@ height:250px;
 
 <h1>Selamat Datang</h1>
 
-<p>Selamat datang di Website Pesona Indonesia.<br>
-Mari mengenal keindahan alam, budaya, dan kekayaan Nusantara.</p>
+<p>
+Selamat Datang di Website Pesona Indonesia.<br>
+Mari mengenal keindahan alam, budaya, dan kekayaan Nusantara.
+</p>
 
 <button onclick="welcome()">Jelajahi Indonesia</button>
+
+<div class="music">
+
+<button onclick="playMusic()">🎵 Putar Musik</button>
+
+</div>
 
 </div>
 
@@ -204,9 +289,9 @@ Mari mengenal keindahan alam, budaya, dan kekayaan Nusantara.</p>
 
 <p>
 
-Indonesia merupakan negara kepulauan terbesar di dunia yang memiliki lebih dari 17.000 pulau. Indonesia terkenal dengan keindahan alamnya seperti Raja Ampat, Bali, Gunung Bromo, Danau Toba, dan masih banyak lagi.
+Indonesia adalah negara kepulauan terbesar di dunia dengan lebih dari 17.000 pulau.
 
-Selain alam yang indah, Indonesia juga memiliki lebih dari 1.300 suku bangsa, ratusan bahasa daerah, serta budaya yang sangat beragam.
+Indonesia memiliki kekayaan budaya, bahasa, suku, serta keindahan alam yang terkenal hingga mancanegara seperti Bali, Raja Ampat, Gunung Bromo, Danau Toba, Labuan Bajo, dan Candi Borobudur.
 
 </p>
 
@@ -214,28 +299,48 @@ Selain alam yang indah, Indonesia juga memiliki lebih dari 1.300 suku bangsa, ra
 
 </section>
 
+<section id="galeri">
+
+<h2>Galeri Indonesia</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=700">
+
+<img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=700">
+
+<img src="https://images.unsplash.com/photo-1558005530-a7958896ec60?w=700">
+
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700">
+
+</div>
+
+</section>
+
 <section id="video">
 
-<h2>Video Keindahan Indonesia</h2>
+<h2>Video Wonderful Indonesia</h2>
 
-<iframe
-src="https://www.youtube.com/embed/ojQbArbuN4E"
-allowfullscreen>
-</iframe>
+<div class="video-container">
+
+<iframe src="https://www.youtube.com/embed/ojQbArbuN4E"
+allowfullscreen></iframe>
+
+</div>
 
 </section>
 
 <footer>
 
-<h3>Pesona Indonesia © 2026</h3>
+<h3>🇮🇩 Pesona Indonesia</h3>
 
-<p>Wonderful Indonesia</p>
+<p>Wonderful Indonesia © 2026</p>
 
 </footer>
 
-<div class="mode" onclick="darkMode()">
-🌙
-</div>
+<div class="mode" onclick="darkMode()">🌙</div>
+
+<div class="top" onclick="topFunction()">⬆</div>
 
 <script>
 
@@ -251,13 +356,33 @@ document.body.classList.toggle("dark");
 
 }
 
+function playMusic(){
+
+let audio=document.getElementById("audio");
+
+audio.play();
+
+}
+
+function topFunction(){
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+}
+
 window.onload=function(){
 
 setTimeout(function(){
 
-alert("Selamat Datang di Website Pesona Indonesia!\nSemoga Anda menikmati keindahan Nusantara 🇮🇩");
+alert("Selamat Datang di Website Pesona Indonesia\nSelamat Menjelajah Nusantara 🇮🇩");
 
-},800);
+},1000);
 
 }
 
